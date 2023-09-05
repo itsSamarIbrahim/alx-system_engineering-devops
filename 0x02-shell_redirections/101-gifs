@@ -1,2 +1,2 @@
 #!/bin/bash
-find . -type f -name "*.txt" |ls -aR  | cut -d "." -f1 | sort -b
+find . -type f -name "*.txt" |ls -aR  | rev | eut -d "." -f1 | rev | sort -b
