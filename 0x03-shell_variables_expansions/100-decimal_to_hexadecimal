@@ -1,2 +1,2 @@
 #!/bin/bash
-echo $((0x$HEXADECIMAL))
+echo $((16#$FF))
