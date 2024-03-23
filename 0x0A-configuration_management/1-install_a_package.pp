@@ -1,21 +1,20 @@
-#Installing flask from pip3 using Puppet
-
-# ensure that python present
+#Ensuring that python present
 package { 'python3.8':
   ensure => present,
 }
 
-# ensure that pip present
+#Ensuring that pip present
 package { 'python3-pip':
   ensure => present,
 }
 
+#Installing flask from pip3 using Puppet
 package { 'flask':
   ensure   => '2.1.0',
   provider => pip3,
 }
 
-# Install Werkzeug
+#Installing Werkzeug
 package { 'werkzeug':
   ensure   => '2.1.1',
   provider => pip3,
