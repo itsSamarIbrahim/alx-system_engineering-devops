@@ -2,6 +2,5 @@
 
 #Getting  Apache to run on the container and to return a page containing Hello Holberton when querying the root of it
 
-echo "Hello Holberton" > /var/www/html/index.html
-sudo service apache2 status
-service apache2 start
+echo 'Hello Holberton' > /var/www/html/index.html
+sudo service apache2 start
