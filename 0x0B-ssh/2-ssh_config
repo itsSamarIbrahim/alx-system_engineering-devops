@@ -7,4 +7,3 @@ Host web-01
     IdentityFile ~/.ssh/school
     PreferredAuthentications publickey
     PasswordAuthentication no
-
