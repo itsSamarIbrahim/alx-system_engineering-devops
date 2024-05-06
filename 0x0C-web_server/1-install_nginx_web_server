@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+#Installing nginx on web server; Nginx should be listening on port 80
+
+# Update package index
+sudo apt-get update
+
+# Install Nginx
+sudo apt-get -y install nginx
+
+# Configure Nginx to listen on port 80
+sudo ufw allow 'Nginx HTTP'
+
+# Start Nginx
+sudo service nginx start
+
+# Create a file with "Hello World!" message
+sudo echo "Hello World!" > /var/www/html/index.html
+
+# Restart Nginx
+sudo service nginx restart
