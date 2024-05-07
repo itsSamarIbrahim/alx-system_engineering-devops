@@ -7,7 +7,7 @@ exec { 'update system':
 package { 'nginx':
   ensure          => installed,
   require         => Exec['update system'],
-  install_options => ['-y'],
+#  install_options => ['-y'],
 }
 
 #file_line { 'install':
