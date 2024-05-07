@@ -10,13 +10,13 @@ package { 'nginx':
 #  install_options => ['-y'],
 }
 
-#file_line { 'install':
-#  ensure => 'presesnt',
-#  path   => '/etc/nginx/sites-enabled/default',
-#  after  => 'listen 80 default_server;',
-#  line   => 'rewrite ^/redirect_me https://www.github.com/itssamaribrahim permanent;',
-#}
-#
+file_line { 'install':
+  ensure => 'presesnt',
+  path   => '/etc/nginx/sites-enabled/default',
+  after  => 'listen 80 default_server;',
+  line   => 'rewrite ^/redirect_me https://www.github.com/itssamaribrahim permanent;',
+}
+
 #file { 'Home page':
 #  ensure  => 'file',
 #  path    => '/var/www/html/index.html',
