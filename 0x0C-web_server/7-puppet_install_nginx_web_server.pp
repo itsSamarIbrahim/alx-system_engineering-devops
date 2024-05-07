@@ -17,15 +17,15 @@ file_line { 'install':
   line   => 'rewrite ^/redirect_me https://www.github.com/itssamaribrahim permanent;',
 }
 
-#file { 'Home page':
-#  ensure  => 'file',
-#  path    => '/var/www/html/index.html',
-#  mode    => '0744',
-#  owner   => 'www-data',
-#  content => 'Hello World!',
-#  require => Exec['nginx'],
-#}
-#
+file { 'Home page':
+  ensure  => 'file',
+  path    => '/var/www/html/index.html',
+  mode    => '0744',
+  owner   => 'www-data',
+  content => 'Hello World!',
+  require => Exec['nginx'],
+}
+
 #file { '404 page':
 #  ensure  => 'file',
 #  path    => '/var/www/error/404.html',
