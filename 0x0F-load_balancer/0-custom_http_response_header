@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# configuring web-01 to have an HTTP response header
+# configuring Nginx so that its HTTP response contains a custom header (on web-01 and web-02)
 
 # Update package index
 sudo apt-get update
