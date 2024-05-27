@@ -18,10 +18,10 @@ sudo apt-get update
 sudo apt-get install ufw -y
 
 # Set the default policy to deny incoming connections
-sudo default deny incoming
+sudo ufw default deny incoming
 
 # Allow outgoing connections by default
-sudo default allow outgoing
+sudo ufw default allow outgoing
 
 # Allow incoming SSH connections on port 22
 sudo ufw allow 22/tcp
@@ -33,7 +33,7 @@ sudo ufw allow 443/tcp
 sudo ufw allow 80/tcp
 
 # Enable UFW to start on boot and apply the rules set so far
-sudo ufw enable
+echo "y" | sudo ufw enable
 
 # Check the status of UFW to ensure rules have been applied correctly
 sudo ufw status
