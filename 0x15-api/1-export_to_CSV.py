@@ -37,5 +37,5 @@ if __name__ == "__main__":
             task_title = task.get('title')
 
             row_data = [task_user_id, employee_username, task_completed,
-                    task_title]
+                        task_title]
             writer.writerow(row_data)
