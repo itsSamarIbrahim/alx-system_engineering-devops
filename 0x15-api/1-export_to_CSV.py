@@ -11,9 +11,9 @@ import sys
 if __name__ == "__main__":
     employee_id = sys.argv[1]
     employee_info_response = requests.get(
-            f'https://jsonplaceholder.typicode.com/users/{employee_id}')
+        f'https://jsonplaceholder.typicode.com/users/{employee_id}')
     todo_list_response = requests.get(
-            f'https://jsonplaceholder.typicode.com/todos?userId={employee_id}')
+        f'https://jsonplaceholder.typicode.com/todos?userId={employee_id}')
 
     employee_info_json = employee_info_response.json()
     todo_list_json = todo_list_response.json()
@@ -29,10 +29,10 @@ if __name__ == "__main__":
 
     with open(f'{employee_id}.csv', 'w', newline='') as employee_tasks_file:
         writer = csv.writer(
-                employee_tasks_file,
-                delimiter=',',
-                quotechar='"',
-                quoting=csv.QUOTE_ALL)
+            employee_tasks_file,
+            delimiter=',',
+            quotechar='"',
+            quoting=csv.QUOTE_ALL)
 
         writer.writerow(['UserID', 'Username', 'TaskCompleted', 'TaskTitle'])
 
@@ -41,7 +41,10 @@ if __name__ == "__main__":
             task_completed = task.get('completed')
             task_title = task.get('title')
 
-            row_data = [task_user_id, employee_username, task_completed,
-                    task_title]
+            row_data = [
+                task_user_id,
+                employee_username,
+                task_completed,
+                task_title]
 
             writer.writerow(row_data)
