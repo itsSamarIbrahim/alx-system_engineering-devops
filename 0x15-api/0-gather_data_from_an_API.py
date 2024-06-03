@@ -27,7 +27,7 @@ if __name__ == "__main__":
             completed_task_count += 1
 
     print(f'Employee {employee_name} is done with tasks\
-            ({completed_task_count}/{total_todo_count}):')
+({completed_task_count}/{total_todo_count}):')
     for task in todo_list_json:
         if task.get('completed'):
             task_title = task.get('title')
