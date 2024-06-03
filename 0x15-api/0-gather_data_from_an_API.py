@@ -10,8 +10,8 @@ import sys
 
 if __name__ == "__main__":
         id = sys.argv[1]
-    info = requests.get('https://jsonplaceholder.typicode.com/users/{}'.format(
-        id))
+    info = requests.get(
+            'https://jsonplaceholder.typicode.com/users/{}'.format(id))
     todo = requests.get(
         'https://jsonplaceholder.typicode.com/todos?userId={}'.format(id))
 
