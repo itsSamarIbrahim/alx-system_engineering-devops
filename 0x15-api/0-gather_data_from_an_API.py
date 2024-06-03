@@ -18,7 +18,7 @@ if __name__ == "__main__":
     employee_info_json = employee_info_response.json()
     todo_list_json = todo_list_response.json()
 
-    employee_name = employee_info_json.get('name', '')
+    employee_name = employee_info_json.get('name')
     total_todo_count = len(todo_list_json)
 
     completed_task_count = 0
@@ -30,5 +30,5 @@ if __name__ == "__main__":
             ({completed_task_count}/{total_todo_count}):')
     for task in todo_list_json:
         if task.get('completed'):
-            task_title = task.get('title', '')
+            task_title = task.get('title')
             print(f'\t {task_title}')
