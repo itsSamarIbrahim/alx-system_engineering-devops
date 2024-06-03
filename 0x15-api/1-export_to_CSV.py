@@ -6,31 +6,36 @@ import requests
 import sys
 
 if __name__ == "__main__":
-    id = sys.argv[1]
-    info = requests.get('https://jsonplaceholder.typicode.com/users/{}'.format(
-        id))
-    todo = requests.get(
-        'https://jsonplaceholder.typicode.com/todos?userId={}'.format(id))
+    employee_id = sys.argv[1]
+    employee_info_response = requests.get(
+            'https://jsonplaceholder.typicode.com/users/{}'.format(
+                employee_id))
+    todo_list_response = requests.get(
+        'https://jsonplaceholder.typicode.com/todos?userId={}'.format(
+            employee_id))
 
-    infod = info.json()
-    todod = todo.json()
+    employee_info_json = employee_info_response.json()
+    todo_list_json = todo_list_response.json()
 
-    name = infod.get('name')
-    user_name = infod.get('username')
-    tasks = len(todod)
+    employee_name = employee_info_json.get('name')
+    employee_username = employee_info_json.get('username')
+    total_tasks = len(todo_list_json)
 
-    count = 0
-    for comp in todod:
-        finished = comp.get('completed')
-        if finished:
-            count += 1
+    completed_tasks = 0
+    for task in todo_list_json:
+        if task.get('completed'):
+            completed_tasks += 1
 
-    with open('{}.csv'.format(id), 'w') as emp_tasks:
-        emp_writer = csv.writer(emp_tasks, delimiter=',', quotechar='"',
-                                quoting=csv.QUOTE_ALL)
-        for task in todod:
-            uid = task.get('userId')
-            comp = task.get('completed')
-            title = task.get('title')
-            write_list = [uid, user_name, comp, title]
-            emp_writer.writerow(write_list)
+    with open('{}.csv'.format(employee_id), 'w') as employee_tasks_file:
+        writer = csv.writer(
+                employee_tasks_file, delimiter=',', quotechar='"',
+                quoting=csv.QUOTE_ALL)
+
+        for task in todo_list_json:
+            task_user_id = task.get('userId')
+            task_completed = task.get('completed')
+            task_title = task.get('title')
+
+            row_data = [task_user_id, employee_username, task_completed,
+                    task_title]
+            writer.writerow(row_data)
