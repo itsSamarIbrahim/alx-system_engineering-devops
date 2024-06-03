@@ -8,22 +8,27 @@ import requests
 import sys
 
 
-def get_data_from_api(uid):
-    """
-    Gets and prints data from JSON PLACEHOLDER API
-    Args:
-        uid: employee id
-    Return:
-        None
-    """
-    base = "https://jsonplaceholder.typicode.com/"
-    user = requests.get(base + "users/" + uid).json()
-    userTodos = requests.get(base + "todos", params={"userId": uid}).json()
-    completed = [_.get("title") for _ in userTodos if _.get("completed")]
-    output = "Employee {} is done with tasks({}/{}):".format(
-        user.get("name"), len(completed), len(userTodos))
-    print("\n\t ".join([output] + completed))
-
-
 if __name__ == "__main__":
-    get_data_from_api(sys.argv[1])
+    employee_id = sys.argv[1]
+    employee_info_response = requests.get(
+            f'https://jsonplaceholder.typicode.com/users/{employee_id}')
+    todo_list_response = requests.get(
+            f'https://jsonplaceholder.typicode.com/todos?userId={employee_id}')
+
+    employee_info_json = employee_info_response.json()
+    todo_list_json = todo_list_response.json()
+
+    employee_name = employee_info_json.get('name', '')
+    total_todo_count = len(todo_list_json)
+
+    completed_task_count = 0
+    for task in todo_list_json:
+        if task.get('completed'):
+            completed_task_count += 1
+
+    print(f'Employee {employee_name} \
+is done with tasks({completed_task_count}/{total_todo_count}):')
+    for task in todo_list_json:
+        if task.get('completed'):
+            task_title = task.get('title', '')
+            print(f'\t {task_title}')
