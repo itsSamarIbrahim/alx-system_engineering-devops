@@ -42,7 +42,7 @@ if __name__ == "__main__":
             task_dict = {
                     "task": task.get('title'),
                     "completed": task.get('completed'),
-                   "username": employee_username
+                    "username": employee_username
                     }
             tasks_list.append(task_dict)
 
