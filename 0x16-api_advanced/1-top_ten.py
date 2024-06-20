@@ -8,7 +8,8 @@ import requests
 
 def top_ten(subreddit):
     """
-    Fetches and prints the titles of the top ten hot posts from a given subreddit on Reddit.
+    Fetches and prints the titles of the top ten hot posts from a given
+    subreddit on Reddit.
 
     Parameters:
     - subreddit (str): The name of the subreddit to fetch posts from.
