@@ -19,17 +19,12 @@ def number_of_subscribers(subreddit):
            Returns 0 if the subreddit does not exist,
            the request fails, or the status code is not 200.
     """
-    headers = {
-        "User-Agent": "MyRedditAPIQuery/0.1",
-    }
+    headers = {"User-Agent": "Custom",}
     url = f'https://www.reddit.com/r/{subreddit}/about.json'
-    try:
-        response = requests.get(url, headers=headers)
-        if response.status_code == 200:
-            data = response.json()
-            data_dict = data.get('data')
-            return data_dict.get('subscribers')
-        else:
-            return 0
-    except Exception as e:
+
+    response = requests.get(url, headers=headers)
+
+    if response.status_code == 200:
+        return response.json().get("data").get("subscribers")
+    else:
         return 0
