@@ -44,6 +44,6 @@
 
 Here's a fun diagram to illustrate what happened:
 
-![Database Connection Pool Exhaustion]([path/to/your/saved/diagram.png](https://github.com/itsSamarIbrahim/alx-system_engineering-devops/blob/master/0x19-postmortem/database_connection_pool_exhaustion.png))
+![Database Connection Pool Exhaustion] (https://github.com/itsSamarIbrahim/alx-system_engineering-devops/blob/master/0x19-postmortem/database_connection_pool_exhaustion.png)
 
 _Above: Our database trying to handle too many connections._
