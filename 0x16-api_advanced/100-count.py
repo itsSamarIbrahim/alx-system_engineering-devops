@@ -15,7 +15,7 @@ def count_words(subreddit, word_list, after=None, word_count=None):
     Counts the occurrences of words from a given word list in the titles of hot
     posts on a specified subreddit.
 
-    This function makes a request to Reddit's API to fetch hot posts from a 
+    This function makes a request to Reddit's API to fetch hot posts from a
     specified subreddit, then iterates through the titles of these posts,
     counting the occurrences of words that match those in the provided
     word list.
@@ -28,11 +28,12 @@ def count_words(subreddit, word_list, after=None, word_count=None):
                              post titles.
     - after (str): A cursor string to paginate through posts. Defaults to None,
                    indicating the start of the thread.
-    - word_count (Counter): An existing Counter object to accumulate word counts
+    - word_count (Counter): An existing Counter object to accumulate word
+                            counts.
                             Defaults to None, creating a new Counter.
 
     Returns:
-    - None: Prints the sorted word counts to stdout and does not return a value.
+    - None: Prints the sorted word counts to stdout and does not return a value
     """
     if word_count is None:
         word_count = Counter()
@@ -56,7 +57,9 @@ def count_words(subreddit, word_list, after=None, word_count=None):
             if after:
                 return count_words(subreddit, word_list, after, word_count)
             else:
-                sorted_word_count = sorted(word_count.items(), key=lambda item: (-item[1], item[0]))
+                sorted_word_count =
+                sorted(word_count.items(),
+                       key=lambda item: (-item[1], item[0]))
                 for word, count in sorted_word_count:
                     print(f'{word}: {count}')
                 return
