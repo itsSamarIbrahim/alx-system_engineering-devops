@@ -9,11 +9,13 @@ import requests
 
 def recurse(subreddit, hot_list=[], after=None):
     """
-    Recursively fetches the titles of hot posts from a given subreddit on Reddit.
+    Recursively fetches the titles of hot posts from a given subreddit
+    on Reddit.
 
-    This function constructs a URL to fetch hot posts from the specified subreddit,
-    then recursively calls itself to fetch subsequent pages of posts until there
-    are no more posts left to fetch (i.e., the 'after' parameter is None).
+    This function constructs a URL to fetch hot posts from the specified
+    subreddit, then recursively calls itself to fetch subsequent pages of
+    posts until there are no more posts left to fetch
+    (i.e., the 'after' parameter is None).
 
     Parameters:
     - subreddit (str): The name of the subreddit to fetch hot posts from.
