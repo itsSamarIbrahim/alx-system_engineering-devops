@@ -1,15 +1,12 @@
-exec { 'increase_worker_processes':
-  command => '/usr/sbin/nginx -s reload',
-  path    => ['/bin', '/usr/bin', '/sbin', '/usr/sbin'],
-  onlyif  => 'grep -q "worker_processes 1;" /etc/nginx/nginx.conf',
+# 0. Sky is the limit, let's bring that limit higher
+
+exec {'replace':
+  provider => shell,
+  command  => 'sudo sed -i "s/ULIMIT=\"-n 15\"/ULIMIT=\"-n 4096\"/" /etc/default/nginx',
+  before   => Exec['restart'],
 }
 
-file { '/etc/nginx/nginx.conf':
-  ensure  => file,
-  content => template('nginx/nginx.conf.erb'),
-}
-
-file { '/etc/nginx/conf.d/optimization.conf':
-  ensure  => file,
-  content => template('nginx/optimization.conf.erb'),
+exec {'restart':
+  provider => shell,
+  command  => 'sudo service nginx restart',
 }
